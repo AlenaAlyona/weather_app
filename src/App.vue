@@ -27,6 +27,7 @@
           v-model="city"
           type="text"
           placeholder="Please enter your location"
+          @keypress="fetchWeather"
         />
       </div>
     </div>
@@ -35,7 +36,7 @@
 
 <script>
 import axios from "axios";
-// const API_KEY = process.env.VUE_APP_APIKEY;
+const API_KEY = process.env.VUE_APP_APIKEY;
 
 export default {
   name: "App",
@@ -44,6 +45,7 @@ export default {
       countries: [],
       selectedCountry: "",
       city: "",
+      weather: [],
     };
   },
   mounted() {
@@ -55,22 +57,17 @@ export default {
     console.log(this.selectedCountry);
     console.log(this.city);
   },
-  // methods: {
-  //   onSearch(search, loading) {
-  //     loading(true);
-  //     this.search(loading, search, this);
-  //   },
-  //   search: debounce((loading, search, vm) => {
-  //     fetch(
-  //       `https://api.weatherbit.io/v2.0/forecast/daily?city=${this.city)},${
-  //         this.selectedCountry
-  //       }&key=0d4893ef8ddf44c89e8f5b49c7b5e67d`
-  //     ).then((res) => {
-  //       res.json().then((json) => (vm.options = json.items));
-  //       loading(false);
-  //     });
-  //   }, 350),
-  // },
+  methods: {
+    fetchWeather(e) {
+      console.log("pressed!");
+      console.log("EEEE", e);
+      if (e.key === "Enter") {
+        fetch(
+          `https://api.weatherbit.io/v2.0/forecast/daily?city=${this.city},${this.selectedCountry}&key=${API_KEY}`
+        ).then((res) => (this.weather = res.data));
+      }
+    },
+  },
 };
 </script>
 
