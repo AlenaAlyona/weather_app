@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    Hi there!
+    <div class="search-box"></div>
   </div>
 </template>
 
@@ -25,5 +25,22 @@ export default {
   margin-top: 60px;
   width: 100%;
   height: 100%;
+}
+
+.search-box {
+  position: absolute;
+  width: 632px;
+  height: 92px;
+  left: 404px;
+  top: 194px;
+
+  background: linear-gradient(
+      0deg,
+      rgba(255, 255, 255, 0.9),
+      rgba(255, 255, 255, 0.9)
+    ),
+    #f8f8f8;
+  box-shadow: 0px 2px 10px rgba(8, 21, 62, 0.15);
+  border-radius: 16px;
 }
 </style>
