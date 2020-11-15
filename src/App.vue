@@ -2,8 +2,7 @@
   <div id="app" class="container">
     <div class="search-box">
       <div class="image-box inlined">
-        <img alt="cloud" class="cloud" src="./assets/cloud.png" />
-        <img alt="sun" class="sun" src="./assets/sun.png" />
+        <img alt="logo" class="logo" src="./assets/logo.png" />
       </div>
       <div class="country-selector inlined">
         <v-select
@@ -22,9 +21,9 @@
           </template>
         </v-select>
       </div>
-      <div class="search-city inlined">
+      <div class="search-city ">
         <input
-          class="search-bar"
+          class="search-bar inlined"
           v-model="city"
           type="text"
           placeholder="Please enter your location"
@@ -54,6 +53,7 @@ export default {
   },
   updated() {
     console.log(this.selectedCountry);
+    console.log(this.city);
   },
   // methods: {
   //   onSearch(search, loading) {
@@ -62,7 +62,7 @@ export default {
   //   },
   //   search: debounce((loading, search, vm) => {
   //     fetch(
-  //       `https://api.weatherbit.io/v2.0/forecast/daily?city=${escape(search)},${
+  //       `https://api.weatherbit.io/v2.0/forecast/daily?city=${this.city)},${
   //         this.selectedCountry
   //       }&key=0d4893ef8ddf44c89e8f5b49c7b5e67d`
   //     ).then((res) => {
@@ -90,13 +90,13 @@ export default {
   min-height: 100vh;
   display: flex;
   justify-content: center;
-  align-items: center;
+  /* align-items: flex-start; */
 }
 .search-box {
   width: 632px;
   height: 92px;
-  display: inline-block;
-
+  display: flex;
+  justify-content: space-around;
   background: linear-gradient(
       0deg,
       rgba(255, 255, 255, 0.9),
@@ -105,50 +105,29 @@ export default {
     #f8f8f8;
   box-shadow: 0px 2px 10px rgba(8, 21, 62, 0.15);
   border-radius: 16px;
-  /* display: grid;
-  gap: 1rem;
-  grid-auto-flow: column; */
   align-items: center;
-  /* justify-content: space-around; */
 }
 .inlined {
   height: 48px;
-  margin-top: 22px;
-  margin-bottom: 22px;
+  display: inline-flex;
 }
 
 .image-box {
-  display: inline-block;
   width: 48px;
   height: 48px;
-  left: 426px;
-  /* top: 215px; */
-  background-color: aqua;
+  display: flex;
+  /* background-color: aqua; */
 }
 
-.cloud {
-  width: 40px;
-  height: 22.35px;
-  /* left: 432px;
-  top: 232px; */
-
-  color: #b5c7ff;
-  opacity: 0.5;
-}
-
-.sun {
-  width: 20.58px;
-  height: 18px;
-  /* left: 428px;
-  top: 224px; */
-
-  color: #ffd600;
+.logo {
+  width: 48px;
+  height: 48px;
 }
 
 .flag-image {
   height: auto;
   max-width: 2.5rem;
-  /* margin-right: 1rem; */
+  margin-right: 1rem;
 }
 
 .d-center {
@@ -198,19 +177,17 @@ export default {
 
 .search-city {
   width: 425px;
-  /* height: 48px; */
-  display: inline-block;
+  height: 48px;
+  display: inline-flex;
   background: #ffffff;
   border: 1px solid rgba(8, 21, 62, 0.05);
   border-radius: 6px;
 }
 
 .search-city .search-bar {
-  display: block;
+  display: inline-flex;
   width: 425px;
-  padding: 15px;
 
-  /* color: #313131; */
   font-size: 20px;
   appearance: none;
   border: none;
@@ -218,12 +195,6 @@ export default {
   background: none;
   box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.25);
   background-color: rgba(255, 255, 255, 0.5);
-  border-radius: 0px 16px 0px 16px;
   transition: 0.4s;
-}
-.search-box .search-bar:focus {
-  box-shadow: 0px 0px 16px rgba(0, 0, 0, 0.25);
-  background-color: rgba(255, 255, 255, 0.75);
-  border-radius: 16px 0px 16px 0px;
 }
 </style>
