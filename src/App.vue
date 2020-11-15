@@ -5,8 +5,12 @@
 </template>
 
 <script>
+const API_KEY = process.env.VUE_APP_APIKEY;
 export default {
   name: "App",
+  mounted() {
+    console.log("API KEY", API_KEY);
+  },
 };
 </script>
 
