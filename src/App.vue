@@ -92,9 +92,9 @@ export default {
         for (let i = 0; i < this.allTen.length; i++) {
           sum += this.allTen[i];
         }
-        let result = sum / 10;
+        let result = Math.round(sum / 10);
         console.log("RESULT", result);
-        return Math.round(sum / 10);
+        return result;
       }
       return null;
     },
@@ -124,6 +124,7 @@ export default {
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap");
 
 #app {
+  position: absolute;
   font-family: "Poppins", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -135,6 +136,31 @@ export default {
   height: 100%;
   display: flex;
   flex-direction: column;
+  height: 100vh;
+  width: 100vw;
+  overflow: auto;
+  overflow-y: scroll;
+  margin: 0px;
+  padding: 0px;
+  background-size: 0vmax;
+  background: linear-gradient(
+      0deg,
+      rgba(255, 255, 255, 0.8),
+      rgba(255, 255, 255, 0.8)
+    ),
+    linear-gradient(
+      119.25deg,
+      #102f7e -11.47%,
+      #0c8dd6 3.95%,
+      #1aa0ec 19.37%,
+      #60c6ff 34.78%,
+      #9bdbff 50.19%,
+      #b4deda 65.61%,
+      #ffd66b 81.02%,
+      #ffc178 96.44%,
+      #fe9255 111.85%
+    );
+  background-repeat: repeat-x;
 }
 .container {
   min-height: 30vh;
