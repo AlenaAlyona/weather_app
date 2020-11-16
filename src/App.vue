@@ -37,6 +37,7 @@
     <div class="show-t">
       <Forecast />
     </div>
+    {{ averageT }}
   </div>
 </template>
 
@@ -56,6 +57,7 @@ export default {
       selectedCountry: "",
       city: "",
       weather: [],
+      allTen: null,
     };
   },
   mounted() {
@@ -66,6 +68,7 @@ export default {
   updated() {
     console.log(this.selectedCountry);
     console.log(this.city);
+    console.log("ALL TEN", this.allTen);
   },
   methods: {
     fetchWeather(e) {
@@ -79,8 +82,23 @@ export default {
           .then((res) => {
             this.weather = res.data.data.slice(0, 10);
             console.log(this.weather);
+            this.allTen = this.weather.map((average) => average.temp);
           });
       }
+    },
+  },
+  computed: {
+    averageT: function() {
+      if (this.allTen) {
+        let sum = 0;
+        for (let i = 0; i < this.allTen.length; i++) {
+          sum += this.allTen[i];
+        }
+        let result = sum / 10;
+        console.log("RESULT", result);
+        return Math.round(sum / 10);
+      }
+      return 0;
     },
   },
 };
