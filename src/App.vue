@@ -35,9 +35,8 @@
       </div>
     </div>
     <div class="show-t">
-      <Forecast />
+      <Forecast :averageT="averageT" :dateToShow="getDate" />
     </div>
-    {{ averageT }}
   </div>
 </template>
 
@@ -68,7 +67,6 @@ export default {
   updated() {
     console.log(this.selectedCountry);
     console.log(this.city);
-    console.log("ALL TEN", this.allTen);
   },
   methods: {
     fetchWeather(e) {
@@ -81,7 +79,7 @@ export default {
           )
           .then((res) => {
             this.weather = res.data.data.slice(0, 10);
-            console.log(this.weather);
+            console.log("WEATHER", this.weather);
             this.allTen = this.weather.map((average) => average.temp);
           });
       }
@@ -98,7 +96,25 @@ export default {
         console.log("RESULT", result);
         return Math.round(sum / 10);
       }
-      return 0;
+      return null;
+    },
+    getDate: function() {
+      if (this.allTen) {
+        let firstDateRaw = this.weather[0].datetime;
+        let lastDateRaw = this.weather[9].datetime;
+        let newFirstDate = new Date(firstDateRaw).toString().split(" ");
+        let newLastDate = new Date(lastDateRaw).toString().split(" ");
+        let dateToShow =
+          newFirstDate[1] +
+          " " +
+          newFirstDate[2] +
+          " - " +
+          newLastDate[2] +
+          " " +
+          newFirstDate[3];
+        return dateToShow.toUpperCase();
+      }
+      return null;
     },
   },
 };
