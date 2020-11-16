@@ -1,46 +1,54 @@
 <template>
-  <div id="app" class="container">
-    <div class="search-box">
-      <div class="image-box inlined">
-        <img alt="logo" class="logo" src="./assets/logo.png" />
-      </div>
-      <div class="country-selector inlined">
-        <v-select
-          v-model="selectedCountry"
-          label="alpha2Code"
-          :options="countries"
-          :reduce="(country) => country.alpha2Code"
-        >
-          <template slot="option" slot-scope="option">
-            <img :src="option.flag" />
-            {{ option.alpha2Code }}
-          </template>
-          <template v-slot:selected-option="option">
-            <img class="flag-image" :src="option.flag" />
-            {{ option.alpha2Code }}
-          </template>
-        </v-select>
-      </div>
-      <div class="search-city ">
-        <input
-          class="search-bar inlined"
-          v-model="city"
-          type="text"
-          placeholder="Please enter your location"
-          @keypress="fetchWeather"
-        />
+  <div id="app">
+    <div class="container">
+      <div class="search-box">
+        <div class="image-box inlined">
+          <img alt="logo" class="logo" src="./assets/logo.png" />
+        </div>
+        <div class="country-selector inlined">
+          <v-select
+            v-model="selectedCountry"
+            label="alpha2Code"
+            :options="countries"
+            :reduce="(country) => country.alpha2Code"
+          >
+            <template slot="option" slot-scope="option">
+              <img :src="option.flag" />
+              {{ option.alpha2Code }}
+            </template>
+            <template v-slot:selected-option="option">
+              <img class="flag-image" :src="option.flag" />
+              {{ option.alpha2Code }}
+            </template>
+          </v-select>
+        </div>
+        <div class="search-city ">
+          <input
+            class="search-bar inlined"
+            v-model="city"
+            type="text"
+            placeholder="Please enter your location"
+            @keypress="fetchWeather"
+          />
+        </div>
       </div>
     </div>
-    {{ weather }}
+    <div class="show-t">
+      <Forecast />
+    </div>
   </div>
 </template>
 
 <script>
 import axios from "axios";
+import Forecast from "./components/Forecast";
 const API_KEY = process.env.VUE_APP_APIKEY;
 
 export default {
   name: "App",
+  components: {
+    Forecast,
+  },
   data() {
     return {
       countries: [],
@@ -78,8 +86,10 @@ export default {
 </script>
 
 <style>
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap");
+
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: "Poppins", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
@@ -88,12 +98,15 @@ export default {
   margin-top: 60px;
   width: 100%;
   height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 .container {
-  min-height: 100vh;
+  min-height: 30vh;
+  height: auto;
   display: flex;
   justify-content: center;
-  /* align-items: flex-start; */
+  align-items: center;
 }
 .search-box {
   width: 632px;
@@ -176,6 +189,9 @@ export default {
 
 .country-selector {
   display: inline-block;
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  font-size: 14px;
 }
 
 .search-city {
@@ -190,8 +206,9 @@ export default {
 .search-city .search-bar {
   display: inline-flex;
   width: 425px;
-
-  font-size: 20px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  font-size: 14px;
   appearance: none;
   border: none;
   outline: none;
@@ -199,5 +216,10 @@ export default {
   box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.25);
   background-color: rgba(255, 255, 255, 0.5);
   transition: 0.4s;
+}
+
+.show-t {
+  display: flex;
+  flex-direction: column;
 }
 </style>
