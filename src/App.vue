@@ -34,7 +34,7 @@
         </div>
       </div>
     </div>
-    <div class="show-t">
+    <div v-if="averageT" class="show-t">
       <Forecast
         :averageT="averageT"
         :dateToShow="getDate"
@@ -196,7 +196,6 @@ export default {
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap");
 
 #app {
-  position: absolute;
   font-family: "Poppins", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -207,21 +206,19 @@ export default {
   width: 100%;
   height: 100%;
   display: flex;
+  align-items: center;
+  justify-content: center;
   flex-direction: column;
   height: 100vh;
   width: 100vw;
-  /* overflow: hidden; */
   margin: 0px;
   padding: 0px;
   background-size: 0vmax;
 }
 .container {
-  min-height: 30vh;
   height: auto;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 0px;
+  margin-bottom: 48px;
 }
 .search-box {
   width: 632px;
