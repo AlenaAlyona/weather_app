@@ -22,7 +22,12 @@
             </template>
           </v-select>
         </div>
-        <div class="search-city ">
+        <div
+          @mouseover="hoverIn()"
+          @mouseout="hoverOut()"
+          v-bind:style="{ border: b5c6fa }"
+          class="search-city "
+        >
           <input
             class="search-bar inlined"
             v-model="city"
@@ -62,6 +67,8 @@ export default {
       weather: [],
       allTen: null,
       onlyWeek: null,
+      hover: false,
+      borderColor: "#b5c6fa",
     };
   },
   mounted() {
@@ -82,6 +89,12 @@ export default {
             this.allTen = this.weather.map((average) => average.temp);
           });
       }
+    },
+    hoverIn() {
+      this.borderColor = "#b5c6fa";
+    },
+    hoverOut() {
+      this.borderColor = "#ccc";
     },
   },
   computed: {
@@ -200,7 +213,6 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-
   color: #2c3e50;
   margin-top: 60px;
   width: 100%;
@@ -231,10 +243,53 @@ export default {
       rgba(255, 255, 255, 0.9)
     ),
     #f8f8f8;
-  box-shadow: 0px 2px 10px rgba(8, 21, 62, 0.15);
   border-radius: 16px;
   align-items: center;
+  border: none;
 }
+.search-box .search-bar:hover {
+  border: 2px solid #becefb;
+}
+
+.search-box .search-bar:focus {
+  border: 3px solid #b5c6fa;
+}
+
+.search-city {
+  width: 425px;
+  height: 48px;
+  display: inline-flex;
+  background: #ffffff;
+  border-radius: 6px;
+}
+
+.search-city .search-bar {
+  display: inline-flex;
+  display: flex;
+  width: 425px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  text-align: left;
+  appearance: none;
+  border: none;
+  outline: none;
+  background: none;
+  box-shadow: 0px 0px 8px #b5c6fa;
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 6px;
+}
+
+.searchIcon {
+  width: 17.41px;
+  height: 19.41px;
+  color: #000000;
+  align-self: center;
+  right: 430px;
+  position: absolute;
+  background: white;
+}
+
 .inlined {
   height: 48px;
   display: inline-flex;
@@ -304,42 +359,6 @@ export default {
   font-family: "Poppins", sans-serif;
   font-weight: 600;
   font-size: 14px;
-}
-
-.search-city {
-  width: 425px;
-  height: 48px;
-  display: inline-flex;
-  background: #ffffff;
-  border: 1px solid rgba(8, 21, 62, 0.05);
-  border-radius: 6px;
-}
-
-.search-city .search-bar {
-  display: inline-flex;
-  display: flex;
-  width: 425px;
-  font-family: "Poppins", sans-serif;
-  font-weight: 400;
-  font-size: 14px;
-  text-align: left;
-  appearance: none;
-  border: none;
-  outline: none;
-  background: none;
-  box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.25);
-  background-color: rgba(255, 255, 255, 0.5);
-  transition: 0.4s;
-}
-
-.searchIcon {
-  width: 17.41px;
-  height: 19.41px;
-  color: #000000;
-  align-self: center;
-  right: 430px;
-  position: absolute;
-  background: white;
 }
 
 .show-t {
