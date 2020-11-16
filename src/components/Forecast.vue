@@ -6,8 +6,12 @@
       <div class="Celsius">°C</div>
     </div>
     <div class="week">
-      <div class="dayOfWeek" v-for="day in this.tempForWeek" :key="day.day">
-        {{ day.day }} {{ day.temp }}
+      <div class="group" v-for="day in this.tempForWeek" :key="day.day">
+        <div class="oneDay">{{ day.day }}</div>
+        <div class="tempInWeek">
+          <div class="oneTemp">{{ day.temp }}</div>
+          <div class="groupCelsius">°C</div>
+        </div>
       </div>
     </div>
   </div>
@@ -29,6 +33,7 @@ export default {
 }
 
 .dateInF {
+  margin-top: 40px;
   font-style: normal;
   font-weight: 600;
   font-size: 12px;
@@ -41,6 +46,7 @@ export default {
 .temp {
   display: flex;
   flex-direction: row;
+  margin-top: 27px;
 }
 
 .AvTemp {
@@ -67,5 +73,47 @@ export default {
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
+  margin-top: 48px;
+}
+
+.oneDay {
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 24px;
+
+  display: flex;
+  align-items: center;
+  text-align: center;
+  letter-spacing: 0.06em;
+
+  color: #08153e;
+
+  opacity: 0.6;
+}
+.tempInWeek {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.oneTemp {
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 32px;
+  color: #ffffff;
+  display: flex;
+}
+
+.groupCelsius {
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 24px;
+
+  color: #ffffff;
 }
 </style>

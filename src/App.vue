@@ -161,8 +161,7 @@ export default {
   flex-direction: column;
   height: 100vh;
   width: 100vw;
-  overflow: auto;
-  overflow-y: scroll;
+  /* overflow: hidden; */
   margin: 0px;
   padding: 0px;
   background-size: 0vmax;
