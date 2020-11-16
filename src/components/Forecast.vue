@@ -33,7 +33,6 @@ export default {
 }
 
 .dateInF {
-  margin-top: 40px;
   font-style: normal;
   font-weight: 600;
   font-size: 12px;

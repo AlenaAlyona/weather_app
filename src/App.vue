@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="app" v-bind:style="appBackground">
     <div class="container">
       <div class="search-box">
         <div class="image-box inlined">
@@ -139,6 +139,55 @@ export default {
       }
       return null;
     },
+    appBackground: function() {
+      if (!this.averageT) {
+        return {
+          background:
+            "linear-gradient(0deg, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)), linear-gradient(119.25deg, #102F7E -11.47%, #0C8DD6 3.95%, #1AA0EC 19.37%, #60C6FF 34.78%, #9BDBFF 50.19%, #B4DEDA 65.61%, #FFD66B 81.02%, #FFC178 96.44%, #FE9255 111.85%)",
+        };
+      } else if (this.averageT >= 0 && this.averageT <= 10) {
+        return {
+          background:
+            "linear-gradient(130.54deg, #9bdbff -33.02%, #b4deda 52.01%,#ffd66b 137.04%)",
+        };
+      } else if (this.averageT >= 11 && this.averageT <= 20) {
+        return {
+          background:
+            "linear-gradient(110.54deg,#b4deda -0.02%, #ffd66b 50.01%, #ffc178 110.04%)",
+        };
+      } else if (this.averageT >= 21 && this.averageT <= 30) {
+        return {
+          background:
+            "linear-gradient(110.54deg,#ffd66b -0.02%, #ffc178 50.01%, #fe9255 110.04%)",
+        };
+      } else if (this.averageT >= 31 && this.averageT <= 40) {
+        return {
+          background:
+            "linear-gradient(110.54deg,#ffd66b -30.02%, #ffc178 55.01%, #fe9255 140.04%)",
+        };
+      } else if (this.averageT <= -1 && this.averageT >= -10) {
+        return {
+          background:
+            "linear-gradient(110.54deg,#ffffff -30.02%, #60c6ff 30.01%, #1aa0ec 70.04%)",
+        };
+      } else if (this.averageT <= -11 && this.averageT >= -20) {
+        return {
+          background:
+            "linear-gradient(110.54deg,#ffffff -10.02%, #1aa0ec 40.01%, #0c8dd6 70.04%)",
+        };
+      } else if (this.averageT <= -21 && this.averageT >= -30) {
+        return {
+          background:
+            "linear-gradient(110.54deg,#1aa0ec -20.02%, #0c8dd6 50.01%, #102F7E 80.04%)",
+        };
+      } else if (this.averageT <= -31 && this.averageT >= -40) {
+        return {
+          background:
+            "linear-gradient(110.54deg,#0c8dd6 -10.02%, #102F7E 56.01%, #102F7E 100.04%)",
+        };
+      }
+      return null;
+    },
   },
 };
 </script>
@@ -165,24 +214,6 @@ export default {
   margin: 0px;
   padding: 0px;
   background-size: 0vmax;
-  background: linear-gradient(
-      0deg,
-      rgba(255, 255, 255, 0.8),
-      rgba(255, 255, 255, 0.8)
-    ),
-    linear-gradient(
-      119.25deg,
-      #102f7e -11.47%,
-      #0c8dd6 3.95%,
-      #1aa0ec 19.37%,
-      #60c6ff 34.78%,
-      #9bdbff 50.19%,
-      #b4deda 65.61%,
-      #ffd66b 81.02%,
-      #ffc178 96.44%,
-      #fe9255 111.85%
-    );
-  background-repeat: repeat-x;
 }
 .container {
   min-height: 30vh;
@@ -190,6 +221,7 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-bottom: 0px;
 }
 .search-box {
   width: 632px;
