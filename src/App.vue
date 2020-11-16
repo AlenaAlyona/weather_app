@@ -30,6 +30,7 @@
             placeholder="Please enter your location"
             @keypress="fetchWeather"
           />
+          <img alt="searchIcon" class="searchIcon" src="./assets/search.png" />
         </div>
       </div>
     </div>
@@ -65,7 +66,6 @@ export default {
   updated() {
     console.log(this.selectedCountry);
     console.log(this.city);
-    console.log(this.weather);
   },
   methods: {
     fetchWeather(e) {
@@ -78,6 +78,7 @@ export default {
           )
           .then((res) => {
             this.weather = res.data.data.slice(0, 10);
+            console.log(this.weather);
           });
       }
     },
@@ -205,10 +206,12 @@ export default {
 
 .search-city .search-bar {
   display: inline-flex;
+  display: flex;
   width: 425px;
   font-family: "Poppins", sans-serif;
   font-weight: 400;
   font-size: 14px;
+  text-align: left;
   appearance: none;
   border: none;
   outline: none;
@@ -216,6 +219,16 @@ export default {
   box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.25);
   background-color: rgba(255, 255, 255, 0.5);
   transition: 0.4s;
+}
+
+.searchIcon {
+  width: 17.41px;
+  height: 19.41px;
+  color: #000000;
+  align-self: center;
+  right: 430px;
+  position: absolute;
+  background: white;
 }
 
 .show-t {
