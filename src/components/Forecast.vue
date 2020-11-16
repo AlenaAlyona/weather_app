@@ -5,6 +5,7 @@
       <div class="AvTemp">{{ averageT }}</div>
       <div v-if="averageT" class="Celsius">°C</div>
     </div>
+    <div class="week">{{ daysOfWeek }}</div>
   </div>
 </template>
 
@@ -12,6 +13,31 @@
 export default {
   name: "Forecast",
   props: ["averageT", "dateToShow"],
+  data() {
+    return {
+      todayDate: "",
+    };
+  },
+  computed: {
+    daysOfWeek: function() {
+      let d = new Date();
+      let weekday = new Array(7);
+      weekday[0] = "Sunday";
+      weekday[1] = "Monday";
+      weekday[2] = "Tuesday";
+      weekday[3] = "Wednesday";
+      weekday[4] = "Thursday";
+      weekday[5] = "Friday";
+      weekday[6] = "Saturday";
+      let week = [];
+      for (let i = 0; i < 7; i++) {
+        let result = new Date(d);
+        result.setDate(result.getDate() + i);
+        week.push(weekday[result.getDay()]);
+      }
+      return week;
+    },
+  },
 };
 </script>
 

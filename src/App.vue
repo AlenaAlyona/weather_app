@@ -64,14 +64,8 @@ export default {
       .get("https://restcountries.eu/rest/v2/all?fields=alpha2Code;flag")
       .then((response) => (this.countries = response.data));
   },
-  updated() {
-    console.log(this.selectedCountry);
-    console.log(this.city);
-  },
   methods: {
     fetchWeather(e) {
-      console.log("pressed!");
-      console.log("EEEE", e);
       if (e.key === "Enter") {
         axios
           .get(
