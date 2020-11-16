@@ -4,9 +4,9 @@ import "vue-select/dist/vue-select.css";
 import axios from "axios";
 import VueAxios from "vue-axios";
 import App from "./App.vue";
-import vueDebounce from "vue-debounce";
+// import vueDebounce from "vue-debounce";
 
-Vue.use(vueDebounce);
+// Vue.use(vueDebounce);
 
 Vue.use(VueAxios, axios);
 
