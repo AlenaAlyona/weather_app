@@ -31,6 +31,7 @@
         />
       </div>
     </div>
+    {{ weather }}
   </div>
 </template>
 
@@ -56,15 +57,20 @@ export default {
   updated() {
     console.log(this.selectedCountry);
     console.log(this.city);
+    console.log(this.weather);
   },
   methods: {
     fetchWeather(e) {
       console.log("pressed!");
       console.log("EEEE", e);
       if (e.key === "Enter") {
-        fetch(
-          `https://api.weatherbit.io/v2.0/forecast/daily?city=${this.city},${this.selectedCountry}&key=${API_KEY}`
-        ).then((res) => (this.weather = res.data));
+        axios
+          .get(
+            `https://api.weatherbit.io/v2.0/forecast/daily?city=${this.city},${this.selectedCountry}&key=${API_KEY}`
+          )
+          .then((res) => {
+            this.weather = res.data.data.slice(0, 10);
+          });
       }
     },
   },
