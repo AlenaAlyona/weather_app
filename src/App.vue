@@ -35,7 +35,11 @@
       </div>
     </div>
     <div class="show-t">
-      <Forecast :averageT="averageT" :dateToShow="getDate" />
+      <Forecast
+        :averageT="averageT"
+        :dateToShow="getDate"
+        :tempForWeek="tempForWeek"
+      />
     </div>
   </div>
 </template>
@@ -57,6 +61,7 @@ export default {
       city: "",
       weather: [],
       allTen: null,
+      onlyWeek: null,
     };
   },
   mounted() {
@@ -107,6 +112,30 @@ export default {
           " " +
           newFirstDate[3];
         return dateToShow.toUpperCase();
+      }
+      return null;
+    },
+    tempForWeek: function() {
+      if (this.weather) {
+        let currWeek = this.weather.slice(0, 7);
+        let weekday = new Array(7);
+        weekday[0] = "Sunday";
+        weekday[1] = "Monday";
+        weekday[2] = "Tuesday";
+        weekday[3] = "Wednesday";
+        weekday[4] = "Thursday";
+        weekday[5] = "Friday";
+        weekday[6] = "Saturday";
+        let week = [];
+        for (let i = 0; i < currWeek.length; i++) {
+          let d = new Date(currWeek[i].datetime);
+          week.push({
+            day: weekday[d.getDay()],
+            temp: Math.round(currWeek[i].temp),
+          });
+        }
+        console.log("SEVEN DAYS", week);
+        return week;
       }
       return null;
     },

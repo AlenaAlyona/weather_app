@@ -1,43 +1,22 @@
 <template>
-  <div class="forecastTemplate">
+  <div v-if="averageT" class="forecastTemplate">
     <div class="dateInF">{{ dateToShow }}</div>
     <div class="temp">
       <div class="AvTemp">{{ averageT }}</div>
-      <div v-if="averageT" class="Celsius">°C</div>
+      <div class="Celsius">°C</div>
     </div>
-    <div class="week">{{ daysOfWeek }}</div>
+    <div class="week">
+      <div class="dayOfWeek" v-for="day in this.tempForWeek" :key="day.day">
+        {{ day.day }} {{ day.temp }}
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
 export default {
   name: "Forecast",
-  props: ["averageT", "dateToShow"],
-  data() {
-    return {
-      todayDate: "",
-    };
-  },
-  computed: {
-    daysOfWeek: function() {
-      let d = new Date();
-      let weekday = new Array(7);
-      weekday[0] = "Sunday";
-      weekday[1] = "Monday";
-      weekday[2] = "Tuesday";
-      weekday[3] = "Wednesday";
-      weekday[4] = "Thursday";
-      weekday[5] = "Friday";
-      weekday[6] = "Saturday";
-      let week = [];
-      for (let i = 0; i < 7; i++) {
-        let result = new Date(d);
-        result.setDate(result.getDate() + i);
-        week.push(weekday[result.getDay()]);
-      }
-      return week;
-    },
-  },
+  props: ["averageT", "dateToShow", "tempForWeek"],
 };
 </script>
 
@@ -80,5 +59,13 @@ export default {
   font-size: 24px;
   line-height: 32px;
   color: #ffffff;
+}
+
+.week {
+  width: 642px;
+  height: 52px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
 }
 </style>
