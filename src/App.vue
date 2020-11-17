@@ -80,9 +80,6 @@ export default {
       .get("https://restcountries.eu/rest/v2/all?fields=alpha2Code;flag")
       .then((response) => (this.countries = response.data));
   },
-  // updated() {
-  //   console.log(this.weather);
-  // },
   methods: {
     fetchWeather(e) {
       if (e.key === "Enter") {
