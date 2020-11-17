@@ -60,10 +60,6 @@
   opacity: 1;
 }
 
-.search-box .search-bar:focus {
-  border: 3px solid #b5c6fa;
-}
-
 .search-city {
   width: 425px;
   height: 48px;
@@ -96,11 +92,22 @@
   width: 17.41px;
   height: 19.41px;
   color: #e5e4e4;
-  align-self: center;
-  left: 400px;
-  position: absolute;
   background: white;
   opacity: 0.6;
+  position: relative;
+  right: 10px;
+}
+
+.search-button {
+  align-self: center;
+  position: absolute;
+  position: relative;
+  background: none;
+  right: 20px;
+  width: 17.41px;
+  height: 48px;
+  border: none;
+  outline: none;
 }
 
 .inlined {
@@ -118,8 +125,6 @@
   align-items: center;
   position: relative;
   margin-left: 15px;
-
-  /* background-color: aqua; */
 }
 
 .sun {

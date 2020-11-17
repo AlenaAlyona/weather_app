@@ -34,9 +34,14 @@
             v-model="city"
             type="text"
             placeholder="Please enter your location"
-            @keypress="fetchWeather"
           />
-          <img alt="searchIcon" class="searchIcon" src="./assets/search.png" />
+          <button class="search-button" @click="fetchWeatherButton">
+            <img
+              alt="searchIcon"
+              class="searchIcon"
+              src="./assets/search.png"
+            />
+          </button>
         </div>
       </div>
     </div>
@@ -75,6 +80,9 @@ export default {
       .get("https://restcountries.eu/rest/v2/all?fields=alpha2Code;flag")
       .then((response) => (this.countries = response.data));
   },
+  // updated() {
+  //   console.log(this.weather);
+  // },
   methods: {
     fetchWeather(e) {
       if (e.key === "Enter") {
@@ -82,11 +90,23 @@ export default {
           .get(
             `https://api.weatherbit.io/v2.0/forecast/daily?city=${this.city},${this.selectedCountry}&key=${API_KEY}`
           )
+
           .then((res) => {
             this.weather = res.data.data.slice(0, 10);
             this.allTen = this.weather.map((average) => average.temp);
           });
       }
+    },
+    fetchWeatherButton() {
+      axios
+        .get(
+          `https://api.weatherbit.io/v2.0/forecast/daily?city=${this.city},${this.selectedCountry}&key=${API_KEY}`
+        )
+
+        .then((res) => {
+          this.weather = res.data.data.slice(0, 10);
+          this.allTen = this.weather.map((average) => average.temp);
+        });
     },
   },
   computed: {
@@ -99,6 +119,7 @@ export default {
         let result = Math.round(sum / 10);
         return result;
       }
+
       return null;
     },
     getDate: function() {
@@ -138,6 +159,7 @@ export default {
             temp: Math.round(currWeek[i].temp),
           });
         }
+
         return week;
       }
       return null;
