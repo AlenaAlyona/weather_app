@@ -84,7 +84,6 @@ export default {
           )
           .then((res) => {
             this.weather = res.data.data.slice(0, 10);
-            console.log("WEATHER", this.weather);
             this.allTen = this.weather.map((average) => average.temp);
           });
       }
@@ -98,7 +97,6 @@ export default {
           sum += this.allTen[i];
         }
         let result = Math.round(sum / 10);
-        console.log("RESULT", result);
         return result;
       }
       return null;
@@ -140,7 +138,6 @@ export default {
             temp: Math.round(currWeek[i].temp),
           });
         }
-        console.log("SEVEN DAYS", week);
         return week;
       }
       return null;
