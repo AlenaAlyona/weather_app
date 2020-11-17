@@ -52,6 +52,14 @@
   border: 2px solid #becefb;
 }
 
+.search-bar:hover ~ .searchIcon {
+  opacity: 1;
+}
+
+.search-bar:focus ~ .searchIcon {
+  opacity: 1;
+}
+
 .search-box .search-bar:focus {
   border: 3px solid #b5c6fa;
 }
