@@ -3,31 +3,32 @@
     <div class="container">
       <div class="search-box">
         <div class="image-box inlined">
-          <img alt="logo" class="logo" src="./assets/logo.png" />
+          <img alt="sun" class="sun" src="./assets/sun.png" />
+          <img alt="cloud" class="cloud" src="./assets/cloud.png" />
         </div>
-        <div class="country-selector inlined">
+        <div class="country-selector">
           <v-select
             v-model="selectedCountry"
             label="alpha2Code"
             :options="countries"
             :reduce="(country) => country.alpha2Code"
+            :clearable="false"
           >
             <template slot="option" slot-scope="option">
               <img :src="option.flag" />
-              {{ option.alpha2Code }}
+              <div style="font-size: 20px; line-height: 21px;">
+                {{ option.alpha2Code }}
+              </div>
             </template>
             <template v-slot:selected-option="option">
               <img class="flag-image" :src="option.flag" />
-              {{ option.alpha2Code }}
+              <div style="font-size: 20px; line-height: 21px;">
+                {{ option.alpha2Code }}
+              </div>
             </template>
           </v-select>
         </div>
-        <div
-          @mouseover="hoverIn()"
-          @mouseout="hoverOut()"
-          v-bind:style="{ border: b5c6fa }"
-          class="search-city "
-        >
+        <div class="search-city ">
           <input
             class="search-bar inlined"
             v-model="city"
@@ -67,8 +68,6 @@ export default {
       weather: [],
       allTen: null,
       onlyWeek: null,
-      hover: false,
-      borderColor: "#b5c6fa",
     };
   },
   mounted() {
@@ -89,12 +88,6 @@ export default {
             this.allTen = this.weather.map((average) => average.temp);
           });
       }
-    },
-    hoverIn() {
-      this.borderColor = "#b5c6fa";
-    },
-    hoverOut() {
-      this.borderColor = "#ccc";
     },
   },
   computed: {

@@ -19,6 +19,9 @@
   padding: 0px;
   background-size: 0vmax;
 }
+
+/* SEARCH BOX */
+
 .container {
   height: auto;
   display: flex;
@@ -28,7 +31,7 @@
   width: 632px;
   height: 92px;
   display: flex;
-  justify-content: space-around;
+  justify-content: flex-start;
   background: linear-gradient(
       0deg,
       rgba(255, 255, 255, 0.9),
@@ -37,7 +40,13 @@
     #f8f8f8;
   border-radius: 16px;
   align-items: center;
-  border: none;
+}
+
+/* SEARCH BAR (CITY) */
+
+.search-bar {
+  padding-left: 17px;
+  position: relative;
 }
 .search-box .search-bar:hover {
   border: 2px solid #becefb;
@@ -50,12 +59,15 @@
 .search-city {
   width: 425px;
   height: 48px;
+  margin-left: 8px;
   display: inline-flex;
   background: #ffffff;
   border-radius: 6px;
+  position: relative;
 }
 
 .search-city .search-bar {
+  height: 44px;
   display: inline-flex;
   display: flex;
   width: 425px;
@@ -67,37 +79,62 @@
   border: none;
   outline: none;
   background: none;
-  box-shadow: 0px 0px 8px #b5c6fa;
   background-color: rgba(255, 255, 255, 0.5);
   border-radius: 6px;
+  border: 1px solid #e5e4e4;
 }
 
 .searchIcon {
   width: 17.41px;
   height: 19.41px;
-  color: #000000;
+  color: #e5e4e4;
   align-self: center;
-  right: 430px;
+  left: 400px;
   position: absolute;
   background: white;
+  opacity: 0.6;
 }
 
 .inlined {
-  height: 48px;
   display: inline-flex;
 }
+
+/* ICON ON THE LEFT */
 
 .image-box {
   width: 48px;
   height: 48px;
   display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  margin-left: 15px;
+
   /* background-color: aqua; */
 }
 
-.logo {
-  width: 48px;
-  height: 48px;
+.sun {
+  position: relative;
+  width: 20.58px;
+  height: 18px;
+  color: #ffd600;
+  top: -10px;
+  left: -10px;
+  /* top: 30px;
+  left: 24px; */
 }
+
+.cloud {
+  position: absolute;
+  width: 40px;
+  height: 22.35px;
+  color: #b5c7ff;
+  right: 1px;
+  opacity: 0.5;
+}
+
+/* COUNTRY CODE SEARCH BOX */
 
 .flag-image {
   height: auto;
@@ -114,6 +151,19 @@
   width: auto;
   max-height: 23px;
   margin-right: 0.5rem;
+}
+
+.vs__open-indicator {
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  left: 75px;
+}
+
+.vs__selected-options {
+  display: contents;
+  align-items: center;
+  justify-content: center;
 }
 
 .v-select .dropdown li {
@@ -147,11 +197,19 @@
 }
 
 .country-selector {
-  display: inline-block;
+  height: 46px;
+  margin-left: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   font-family: "Poppins", sans-serif;
   font-weight: 600;
   font-size: 14px;
+  border: 1px solid #e5e4e4;
+  border-radius: 6px;
 }
+
+/* WEEKLY FORECAST */
 
 .show-t {
   display: flex;
