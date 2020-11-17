@@ -6,7 +6,7 @@ Do you know what's the weather like today? Or do you know the average temperatur
 
 # Table of contents
 - [Demo](#demo)
-- [Technologies and Consepts](#techs)
+- [Technologies and Concepts](#techs)
 - [Project setup](#setup)
 
 <div id='demo'/>
