@@ -2,7 +2,7 @@
 
 Do you know what's the weather like today? Or do you know the average temperature for upcoming 10 days?
 
-**[WEATHER_VUEAPP](https://weather-vueapp.netlify.app/)** is here to help you out! Click the [link](https://weather-vueapp.netlify.app/) to check it out :sunny:
+**[WEATHER_VUEAPP](https://weather-vueapp.netlify.app/)** is here to help you out :sunny:
 
 # Table of contents
 - [Demo](#demo)
