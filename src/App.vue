@@ -34,6 +34,7 @@
             v-model="city"
             type="text"
             placeholder="Please enter your location"
+            @keypress="fetchWeather"
           />
           <button class="search-button" @click="fetchWeatherButton">
             <img
